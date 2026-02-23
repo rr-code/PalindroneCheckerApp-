@@ -5,47 +5,42 @@ import java.util.Scanner;
 public class PalindroneCheckerApp {
 
 
-    public static void main(String[] args
+    public static void main(String[] args){
 
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-        // Take input from user
         System.out.print("Enter a string: ");
-        String input = scanner.nextLine();
+    String input = sc.nextLine();
 
+    // Convert string to lowercase (optional for case-insensitive check)
+    input = input.toLowerCase();
 
-        String reversed = "";
+    // Convert string to character array
+    char[] charArray = input.toCharArray();
 
-        // Reverse string using for loop
-        for (int i = input.length() - 1; i >= 0; i--) {
-            reversed = reversed + input.charAt(i);
+    int start = 0;
+    int end = charArray.length - 1;
+
+    boolean isPalindrome = true;
+
+    // Two-pointer approach
+        while (start < end) {
+        if (charArray[start] != charArray[end]) {
+            isPalindrome = false;
+            break;
         }
+        start++;
+        end--;
+    }
 
-        // Compare original and reversed string
-        if (input.equals(reversed)) {
-            System.out.println("The string is a Palindrome.");
-        } else {
-            System.out.println("The string is NOT a Palindrome.");
-
-        boolean isPalindrome = true;
-
-        // Loop till half of the string length
-        for (int i = 0; i < input.length() / 2; i++) {
-
-            if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
-            }
-        }
-
-        // Display result
+    // Output result
         if (isPalindrome) {
-            System.out.println(input + " is a Palindrome.");
-        } else {
-            System.out.println(input + " is NOT a Palindrome.");
-        }
+        System.out.println("The given string is a Palindrome.");
+    } else {
+        System.out.println("The given string is NOT a Palindrome.");
+    }
 
-        scanner.close();
+        sc.close();
     }
 }
