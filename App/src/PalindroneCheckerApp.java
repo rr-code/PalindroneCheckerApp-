@@ -1,9 +1,6 @@
 import java.util.*;
 
-// =======================================================
-// MAIN CLASS - UseCase12PalindromeCheckerApp
-// =======================================================
-public class UseCase12PalindromeCheckerApp {
+public class PalindroneCheckerApp {
 
     public static void main(String[] args) {
 
