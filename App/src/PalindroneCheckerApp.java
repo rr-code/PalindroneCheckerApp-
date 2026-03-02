@@ -1,40 +1,34 @@
 import java.util.Scanner;
 
-
 public class PalindroneCheckerApp {
 
-    // Application entry point
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
+        // Taking user input
         System.out.print("Enter a string: ");
-        String input = sc.nextLine();
+        String input = scanner.nextLine();
 
-        // Remove spaces and convert to lowercase (optional improvement)
-        input = input.replaceAll("\\s+", "").toLowerCase();
+        // Step 1: Normalize string
+        // Remove all non-alphanumeric characters and convert to lowercase
+        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        boolean isPalindrome = true;
 
-        boolean result = check(input, 0, input.length() - 1);
+        // Step 2: Compare characters from both ends
+        for (int i = 0; i < normalized.length() / 2; i++) {
 
-        System.out.println("Is Palindrome? : " + result);
+            if (normalized.charAt(i) !=
+                    normalized.charAt(normalized.length() - 1 - i)) {
 
-        sc.close();
-    }
-
-    // Recursive method to check palindrome
-    private static boolean check(String s, int start, int end) {
-
-        // Base condition: if start crosses end
-        if (start >= end) {
-            return true;
+                isPalindrome = false;
+                break;
+            }
         }
 
-        // If characters don't match
-        if (s.charAt(start) != s.charAt(end)) {
-            return false;
-        }
+        // Output result
+        System.out.println("Is Palindrome? " + isPalindrome);
 
-        // Recursive call
-        return check(s, start + 1, end - 1);
+        scanner.close();
     }
 }
